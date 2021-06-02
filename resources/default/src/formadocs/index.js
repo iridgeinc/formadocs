@@ -3,6 +3,7 @@ import OpenAPI from './openapi.json';
 
 import SwaggerParser from "@apidevtools/swagger-parser";
 import { useAsync } from "react-async"
+import clsx from 'clsx';
 
 const parser = async ({api}) => {
   return await SwaggerParser.parse(api)
@@ -26,9 +27,24 @@ export function FormadocsTag ({endpoint, method}) {
 }
 
 export function FormadocsMethod ({endpoint, method}) {
+  let color = 'badge--secondary';
+  switch (method) {
+    case 'get':
+      color = 'badge--success';
+      break;
+    case 'post':
+      color = 'badge--warning';
+      break;
+    case 'put':
+      color = 'badge--info';
+      break;
+    case 'delete':
+      color = 'badge--danger';
+      break;
+  }
   return (
     <div>
-      <span className="badge badge--secondary">{method.toUpperCase()}</span>
+      <span className={clsx('badge', color)}>{method.toUpperCase()}</span>
     </div>
   );
 }
@@ -67,9 +83,9 @@ export function FormadocsParameters ({endpoint, method}) {
               <tr key={idx}>
                 <td>{params.in}</td>
                 <td>{params.name}</td>
-                <td>{String(!!params.required)}</td>
+                <td><code>{String(!!params.required)}</code></td>
                 <td>{params.description}</td>
-                <td>{String(!!params.deprecated)}</td>
+                <td><code>{String(!!params.deprecated)}</code></td>
               </tr>
             ))}
           </tbody>
@@ -88,12 +104,12 @@ export function FormadocsRequestBody ({endpoint, method}) {
       return (
         <div>
           <div>{resource.requestBody.description}</div>
-          <div>Required: {String(!!resource.requestBody.required)}</div>
-          <div>
+          <div>Required: <code>{String(!!resource.requestBody.required)}</code></div>
+          <ul>
             {Object.entries(resource.requestBody.content).map(([content, params], idx) => (
-              <div>{content}</div>
+              <li key={content}>{content}</li>
             ))}
-          </div>
+          </ul>
         </div>
       )
     }
