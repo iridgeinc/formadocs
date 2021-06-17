@@ -5,7 +5,7 @@ slug: /installation
 ---
 
 ### Installation
-Formadocs is made by node v14, so can you install it via yarn.
+formadocs is made by node v14, so can you install it via yarn.
 
 ```shell
 git clone https://github.com/iridgeinc/formadocs

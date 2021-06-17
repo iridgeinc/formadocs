@@ -2,13 +2,13 @@
 module.exports = {
   title: 'formadocs',
   tagline: 'formadocs is a simple document generator with OpenAPI.',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://iridgeinc.github.io',
+  baseUrl: '/formadocs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'iRidge', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'iRidge',
+  projectName: 'formadocs',
   themeConfig: {
     navbar: {
       title: 'formadocs',
