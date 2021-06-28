@@ -21,18 +21,18 @@ import {FormadocsTag, FormadocsMethod, FormadocsEndpoint, FormadocsParameters, F
 
 <FormadocsTag endpoint={'${endpoint}'} method={'${method}'} />
 
-# URL
+## URL
 <FormadocsEndpoint endpoint={'${endpoint}'} method={'${method}'} />
 
 <FormadocsMethod endpoint={'${endpoint}'} method={'${method}'} />
 
-# Parameters
+## Parameters
 <FormadocsParameters endpoint={'${endpoint}'} method={'${method}'} />
 
-# Request Body
+## Request Body
 <FormadocsRequestBody endpoint={'${endpoint}'} method={'${method}'} />
 
-# Responses
+## Responses
 <FormadocsResponses endpoint={'${endpoint}'} method={'${method}'} />
 `
 }
