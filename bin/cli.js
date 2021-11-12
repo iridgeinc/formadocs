@@ -51,10 +51,16 @@ async function main () {
       alias: 'p',
       describe: 'a path to output a documentation'
     })
+    .alias('u', 'update').boolean('u').describe('u', 'Update only')
     .demandOption(['openapi', 'path'], 'Please provide both openapi and path arguments to build documentation with openapi')
     .help()
     .argv;
   console.log('argv', argv);
+
+  if (argv.update) {
+    await fs.copyFile(argv.openapi, path.join(argv.path, 'src/formadocs/openapi.json'));
+    return;
+  }
 
   await fs.mkdir(argv.path);
   await fsex.copy('./resources/default', argv.path);
