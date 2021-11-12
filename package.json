@@ -1,7 +1,7 @@
 {
-  "name": "formadocs-startup",
-  "version": "0.0.0",
-  "repository": "https://github.com/kamiazya/formadocs-startup.git",
+  "name": "formadocs",
+  "version": "0.1.0",
+  "repository": "https://github.com/iridgeinc/formadocs",
   "license": "MIT",
   "main": "lib/index.js",
   "bin": {
