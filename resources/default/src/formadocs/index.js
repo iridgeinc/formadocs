@@ -1,18 +1,10 @@
 import React from 'react';
+import clsx from 'clsx';
 import OpenAPI from './openapi.json';
 
-import SwaggerParser from "@apidevtools/swagger-parser";
-import { useAsync } from "react-async"
-import clsx from 'clsx';
-
-const parser = async ({api}) => {
-  return await SwaggerParser.parse(api)
-}
-
 export function FormadocsTag ({endpoint, method}) {
-  const {data} = useAsync({ promiseFn: parser, api: OpenAPI});
-  if (data) {
-    const resource = data.paths[endpoint][method];
+  if (OpenAPI) {
+    const resource = OpenAPI.paths[endpoint][method];
     if (resource.tags) {
       return (
         <div>
@@ -50,9 +42,8 @@ export function FormadocsMethod ({endpoint, method}) {
 }
 
 export function FormadocsEndpoint ({endpoint, method}) {
-  const {data} = useAsync({ promiseFn: parser, api: OpenAPI});
-  if (data) {
-    const url = (data.servers) ? data.servers[0].url : '';
+  if (OpenAPI) {
+    const url = (OpenAPI.servers) ? OpenAPI.servers[0].url : '';
     return (
       <div>
         {`${url}${endpoint}`}
@@ -63,9 +54,8 @@ export function FormadocsEndpoint ({endpoint, method}) {
 }
 
 export function FormadocsParameters ({endpoint, method}) {
-  const {data} = useAsync({ promiseFn: parser, api: OpenAPI});
-  if (data) {
-    const resource = data.paths[endpoint][method];
+  if (OpenAPI) {
+    const resource = OpenAPI.paths[endpoint][method];
     if (resource.parameters) {
       return (
         <table>
@@ -97,9 +87,8 @@ export function FormadocsParameters ({endpoint, method}) {
 }
 
 export function FormadocsRequestBody ({endpoint, method}) {
-  const {data} = useAsync({ promiseFn: parser, api: OpenAPI});
-  if (data) {
-    const resource = data.paths[endpoint][method];
+  if (OpenAPI) {
+    const resource = OpenAPI.paths[endpoint][method];
     if (resource.requestBody) {
       return (
         <div>
@@ -118,9 +107,8 @@ export function FormadocsRequestBody ({endpoint, method}) {
 }
 
 export function FormadocsResponses ({endpoint, method}) {
-  const {data} = useAsync({ promiseFn: parser, api: OpenAPI});
-  if (data) {
-    const resource = data.paths[endpoint][method];
+  if (OpenAPI) {
+    const resource = OpenAPI.paths[endpoint][method];
     if (resource.responses) {
       return (
         <table>
