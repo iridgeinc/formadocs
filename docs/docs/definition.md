@@ -4,7 +4,7 @@ title: Definition
 ---
 
 ### Definition
-Prepare the OpenAPI file to create the document.  
+Prepare the OpenAPI file to create the document.
 This time we will use example/openapi.json as an example.
 
 #### example/openapi.json
@@ -204,3 +204,16 @@ This time we will use example/openapi.json as an example.
   }
 }
 ```
+
+### Precautions
+
+#### Path segment starting with underscore
+
+Note that if the path segment provides an API that starts with underscore,
+for example `_search`, it will be excluded by the default docusaurus behavior.
+
+
+As mentioned in [the pull request](https://github.com/facebook/docusaurus/pull/5173),
+if you are exposing an API that contains a path segment that starts with underscore,
+you can get the expected behavior by removing the prefix rule that starts with underscore
+from the exclude configuration.
