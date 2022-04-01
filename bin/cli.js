@@ -57,17 +57,17 @@ async function main () {
     .argv;
   console.log('argv', argv);
 
+  let api = await SwaggerParser.dereference(argv.openapi);
+  console.log('api', api);
+
   if (argv.update) {
-    await fs.copyFile(argv.openapi, path.join(argv.path, 'src/formadocs/openapi.json'));
+    await fs.writeFile(path.join(argv.path, 'src/formadocs/openapi.json'), JSON.stringify(api, null, 2));
     return;
   }
 
   await fs.mkdir(argv.path);
   await fsex.copy('./resources/default', argv.path);
-  await fs.copyFile(argv.openapi, path.join(argv.path, 'src/formadocs/openapi.json'));
-
-  api = await SwaggerParser.parse(argv.openapi);
-  console.log('api', api);
+  await fs.writeFile(path.join(argv.path, 'src/formadocs/openapi.json'), JSON.stringify(api, null, 2));
 
   const sidebars = {
     docs: [
