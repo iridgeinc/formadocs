@@ -227,10 +227,10 @@ module.exports = {
   presets: [
     [
       {
-      docs: {
-        exclude: [
-              '**/*.test.{js,jsx,ts,tsx}',
-              '**/__tests__/**',
+        docs: {
+          exclude: [
+            '**/*.test.{js,jsx,ts,tsx}',
+            '**/__tests__/**',
           ]
         },
       },
