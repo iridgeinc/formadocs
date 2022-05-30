@@ -215,3 +215,26 @@ for example, `_search` will be excluded by the default docusaurus behavior.
 As mentioned in [the pull request](https://github.com/facebook/docusaurus/pull/5173),
 if you are exposing an API that contains a path segment that starts with an underscore,
 you can get the expected behavior by removing the prefix rule that starts with an underscore from the exclude configuration.
+
+##### For example
+
+The following shows the insertion position of the corresponding example.
+
+* docusaurus.config.js
+
+```javascript
+module.exports = {
+  presets: [
+    [
+      {
+      docs: {
+        exclude: [
+              '**/*.test.{js,jsx,ts,tsx}',
+              '**/__tests__/**',
+          ]
+        },
+      },
+    ],
+  ],
+};
+```
